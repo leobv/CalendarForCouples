@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 antialiased selection:bg-primary-200 selection:text-primary-900;
+  }
+}
+
+.pwa-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* React Big Calendar - Dark Mode & Mobile Fixes */
+.dark .rbc-calendar {
+  color: #e4e4e7;
+  /* text-zinc-200 */
+}
+
+.dark .rbc-month-view,
+.dark .rbc-time-view,
+.dark .rbc-agenda-view {
+  border-color: #27272a;
+  /* border-zinc-800 */
+  background-color: #09090b;
+  /* bg-zinc-950 */
+}
+
+.dark .rbc-header {
+  border-bottom-color: #27272a;
+  color: #a1a1aa;
+  /* text-zinc-400 */
+  font-weight: 500;
+}
+
+.dark .rbc-month-row,
+.dark .rbc-day-bg,
+.dark .rbc-time-content,
+.dark .rbc-time-header-content,
+.dark .rbc-timeslot-group,
+.dark .rbc-time-column {
+  border-color: #27272a;
+}
+
+.dark .rbc-off-range-bg {
+  background-color: #18181b;
+  /* bg-zinc-900 */
+}
+
+.dark .rbc-today {
+  background-color: #27272a;
+  /* bg-zinc-800 */
+}
+
+.dark .rbc-toolbar button {
+  color: #a1a1aa;
+  border-color: #3f3f46;
+}
+
+.dark .rbc-toolbar button:hover {
+  background-color: #27272a;
+  color: #f4f4f5;
+}
+
+.dark .rbc-toolbar button.rbc-active {
+  background-color: #4f46e5 !important;
+  /* primary-600 */
+  border-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+.dark .rbc-button-link {
+  color: #d4d4d8;
+  /* text-zinc-300 */
+}
+
+.dark .rbc-show-more {
+  color: #818cf8;
+  /* primary-400 */
+  background-color: transparent;
+}
+
+/* Agenda view specifics */
+.dark .rbc-agenda-view table.rbc-agenda-table {
+  border-color: #27272a;
+}
+
+.dark .rbc-agenda-view table.rbc-agenda-table tbody>tr>td+td {
+  border-left-color: #27272a;
+}
+
+.dark .rbc-agenda-view table.rbc-agenda-table thead>tr>th {
+  border-bottom-color: #27272a;
+  color: #a1a1aa;
+}
+
+.dark .rbc-agenda-time-cell {
+  color: #a1a1aa;
+}
+
+/* Fix mobile header truncation */
+.rbc-header {
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal !important;
+  word-break: break-word;
+  overflow: visible !important;
+  padding: 4px 2px !important;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Space {
+  id        String     @id @default(uuid())
+  name      String?
+  createdAt DateTime   @default(now())
+  users     User[]
+  events    Event[]
+  listItems ListItem[]
+}
+
+model User {
+  id       String  @id @default(uuid())
+  name     String
+  email    String  @unique
+  password String
+  spaceId  String
+  space    Space   @relation(fields: [spaceId], references: [id])
+  events   Event[]
+}
+
+model Event {
+  id        String    @id @default(uuid())
+  spaceId   String
+  title     String
+  dateStart DateTime
+  dateEnd   DateTime?
+  createdBy String
+  space     Space     @relation(fields: [spaceId], references: [id])
+  creator   User      @relation(fields: [createdBy], references: [id])
+}
+
+model ListItem {
+  id          String  @id @default(uuid())
+  spaceId     String
+  content     String
+  isCompleted Boolean @default(false)
+  space       Space   @relation(fields: [spaceId], references: [id])
+}
